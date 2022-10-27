@@ -4,8 +4,7 @@ let lista = require('../src/main');
 
 
 route.get('/', async (req, res)=>{
-    console.log('mamamma')
-    res.render('page/home',{resp:'aaaaa'});   
+    res.render('page/home',{resp:''});   
 });
 
 route.get('/exist', async (req, res)=>{

@@ -1,18 +1,19 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
-const bodyParser = require('body-parser');
 
+const helmet = require('helmet');
+const csrf = require('csurf');
 const flash = require('connect-flash');
 const session = require('express-session');
-const global = require('./routes/middleware/middleware');
+const {middleGlobal, csrfTokenerr,mcsrfToken} = require('./routes/middleware/middleware');
 let index = require('./routes/router');
-const { Session } = require('inspector');
+
 /* mongoose.connect(process.env.CONNECTSTRING).then(()=>{
     console.log('conectado com a base de dados')
     app.emit('pronto');
@@ -20,6 +21,7 @@ const { Session } = require('inspector');
 
 
 
+app.use(helmet());
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.resolve(__dirname, 'public')));
@@ -32,10 +34,13 @@ app.use( session ( {
     saveUninitialized : true , 
     cookie : {  secure : true  } 
   } ) );
-  
+ 
+app.use(csrf());
 app.use(flash());
 
-app.use(global.Global);
+app.use(mcsrfToken)
+app.use(middleGlobal);
+app.use(csrfTokenerr);
 app.use('/',index);
 
 /* app.on('pronto',()=>{app.listen(3000, ()=>{
