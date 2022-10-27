@@ -4,19 +4,19 @@ let lista = require('../src/main');
 
 
 route.get('/', async (req, res)=>{
-    res.render('page/index');   
+    console.log('mamamma')
+    res.render('page/home',{resp:'aaaaa'});   
 });
 
 route.get('/exist', async (req, res)=>{
     await lista.Lista().then(list =>{
-     res.render('page/index');
+     res.render('page/clientFind');
     });
  });
 
 route.post('/register', (req, res)=>{
     lista.Ler(req.body)
-    console.log(req.flash('sucess')[0])
-    res.redirect('back', {resp:req.flash('sucess')})
+    res.redirect('back')
 });
 
 route.get('/list', async (req, res)=>{
