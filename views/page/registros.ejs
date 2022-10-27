@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<%- include("../includes/head"); %>
+<body>
+    <%- include("../includes/header"); %>
+    <table>
+        <thead>
+            <tr>
+                <th>nome cliente</th>
+                <th>descrição da divida</th>
+                <th>quantia em divida</th>
+                <th>Contactos</th>
+                <th>atendente</th>
+                <th>data</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <% lis.forEach(kilapeiro =>{ %>
+            <tr>
+                <td><%= kilapeiro.nameCliente %></td>
+                <td><%= kilapeiro.descrition %></td>
+                <td><%= kilapeiro.valor %></td>
+                <td><%= kilapeiro.tel_email %></td>
+                <td><%= kilapeiro.atendente %></td>
+                <td><%= kilapeiro.data %></td>
+            </tr> 
+            <% }) %>
+        </tbody>
+    </table>
+    
+    <%- include("../includes/footer"); %>
+</body>
+</html>
