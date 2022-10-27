@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<%- include("../includes/head"); %>
+<body>
+    <%- include("../includes/header") %>
+    <p class="clear"></p>
+    <main class="container">
+        <div class="resposta"><%= resp %></div>
+        <form method="post" action="/register">
+            <label for="nameCliente">Cliente: </label>
+            <input type="text" name="nameCliente" placeholder="digite o nome do cliente">
+            <label for="valor">Valor: </label>
+            <input type="number" name="valor" placeholder="digite o valor a pagar">
+            <label for="tel_email">Tel/e-mail: </label>
+            <input type="text" name="tel_email" placeholder="digite o terminal ou o e-mail">
+            <label for="descrition">Descrição: </label>
+            <textarea name="descrition" placeholder="descrição da divida"></textarea>
+            <select name="atendente">
+                <option value="">Selecionar atendente</option>
+                <option value="Mandela">Mandela</option>
+                <option value="Figueira">Figueira</option>
+                <option value="Alfa">Alfa</option>
+            </select>
+            <div class="btn">
+                <span>Cliente existente!,<a href="/exist">clique aqu!</a></span>
+                <button type="submit">registrar</button>
+            </div>
+        </form>
+    </main>
+    <%- include("../includes/footer"); %>
+    <script src="js/bundle.js"></script>
+</body>
+</html>

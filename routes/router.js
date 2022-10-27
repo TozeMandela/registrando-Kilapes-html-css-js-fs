@@ -4,12 +4,14 @@ let lista = require('../src/main');
 
 
 route.get('/', async (req, res)=>{
-   await lista.Lista().then(list =>{
-    res.render('page/index', {lis: list, resp:req.flash('sucess')});
-    
-    req.flash('sucess','cadastrado com sucesso!');
-   });
+    res.render('page/index');   
 });
+
+route.get('/exist', async (req, res)=>{
+    await lista.Lista().then(list =>{
+     res.render('page/index');
+    });
+ });
 
 route.post('/register', (req, res)=>{
     lista.Ler(req.body)
