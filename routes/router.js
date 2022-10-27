@@ -10,7 +10,7 @@ route.get('/', async (req, res)=>{
 
 route.get('/exist', async (req, res)=>{
     await lista.Lista().then(list =>{
-     res.render('page/clientFind');
+     res.render('page/clientFind',{lis: list, resp:'aaaaa'});
     });
  });
 
